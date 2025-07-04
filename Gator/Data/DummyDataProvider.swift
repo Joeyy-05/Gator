@@ -31,8 +31,13 @@ enum DummyDataProvider {
         let semester1D3TI = Semester(nomor: 1)
         semester1D3TI.jurusan = d3ti
         semester1D3TI.mataKuliah = [
-            MataKuliah(nama: "Logika Pemrograman", sks: 3, komponen: komponenUmum),
-            MataKuliah(nama: "Pengantar TI", sks: 2, komponen: komponenUmum)
+            MataKuliah(nama: "Dasar Pemrograman", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Bahasa Inggris I", sks: 2, komponen: komponenUmum),
+            MataKuliah(nama: "Penyelesaian Masalah di Dunia Digital", sks: 2, komponen: komponenUmum),
+            MataKuliah(nama: "Pembentukan Karakter Del", sks: 2, komponen: komponenUmum),
+            MataKuliah(nama: "Rekayasa dan Perancangan Perangkat Lunak", sks: 2, komponen: komponenUmum),
+            MataKuliah(nama: "Pengembangan Situs Web", sks: 2, komponen: komponenUmum),
+            MataKuliah(nama: "Arsitektur dan Organisasi Komputer", sks: 2, komponen: komponenUmum),
         ]
 
         // Jurusan: Teknologi Komputer
@@ -55,8 +60,25 @@ enum DummyDataProvider {
         let semester1D4TRPL = Semester(nomor: 1)
         semester1D4TRPL.jurusan = d4trpl
         semester1D4TRPL.mataKuliah = [
-            MataKuliah(nama: "Analisis & Desain Perangkat Lunak", sks: 3, komponen: komponenUmum),
-            MataKuliah(nama: "Arsitektur Perangkat Lunak", sks: 3, komponen: komponenUmum)
+            MataKuliah(nama: "Arsitektur dan Organisasi Komputer", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Penyelesaian Masalah di Dunia Digital", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Dasar Pemrograman", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Matematika Diskrit", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Pengembangan Situs Web I", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Pengenalan Rekayasa Perangkat Lunak", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Bahasa Inggris I", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Pembentukan Karakter Del", sks: 3, komponen: komponenUmum),
+        ]
+        let semester2D4TRPL = Semester(nomor: 2)
+        semester2D4TRPL.jurusan = d4trpl
+        semester2D4TRPL.mataKuliah = [
+            MataKuliah(nama: "Sistem Operasi", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Analisis Kebutuhan Perangkat Lunak", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pengembangan Situs Web II", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pengenalan Basis Data", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Proyek Akhir Tahun I", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Agama", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Bahasa Indonesia", sks: 4, komponen: komponenPraktikum),
         ]
         
         // =================================================================
@@ -69,13 +91,24 @@ enum DummyDataProvider {
         let semester1S1IF = Semester(nomor: 1)
         semester1S1IF.jurusan = s1if
         semester1S1IF.mataKuliah = [
-            MataKuliah(nama: "Dasar Pemrograman", sks: 3, komponen: komponenUmum),
-            MataKuliah(nama: "Matematika Diskrit", sks: 3, komponen: komponenUmum)
+            MataKuliah(nama: "Matematika Dasar I", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Bahasa Inggris I", sks: 3, komponen: komponenUmum),
+            MataKuliah(nama: "Pembentukan Karakter Del", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Bahasa Indonesia", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Matematika Diskrit", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pemograman Fungsional (+P)", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Penyelesaian Masalah di Dunia Digital", sks: 4, komponen: komponenPraktikum),
         ]
         let semester2S1IF = Semester(nomor: 2)
         semester2S1IF.jurusan = s1if
         semester2S1IF.mataKuliah = [
-            MataKuliah(nama: "Struktur Data & Algoritma", sks: 4, komponen: komponenPraktikum)
+            MataKuliah(nama: "Matematika Dasar II", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pengantar Rekayasa dan Desain", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pemodelan dan Simulasi (+P)", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Rekayasa Perangkat Lunak", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pemograman Prosedural (+P)", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Bahasa Inggris II", sks: 4, komponen: komponenPraktikum),
+            MataKuliah(nama: "Pancasila", sks: 4, komponen: komponenPraktikum),
         ]
 
         // Jurusan: Manajemen Rekayasa
