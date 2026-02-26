@@ -16,5 +16,5 @@ final class Jurusan {
     
     init(nama: String) {
         self.nama = nama
-    }
+    }  
 }

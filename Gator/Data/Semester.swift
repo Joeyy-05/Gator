@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 final class Semester {
-    var nomor: Int // Semester 1, 2, 3, dst.
+    var nomor: Int
     @Relationship(deleteRule: .cascade, inverse: \MataKuliah.semester)
     var mataKuliah: [MataKuliah] = []
     
-    // Hubungan balik ke Jurusan
     var jurusan: Jurusan?
     
-    init(nomor: Int) {
+    init(nomor: Int, jurusan: Jurusan) {
         self.nomor = nomor
+        self.jurusan = jurusan
     }
 }

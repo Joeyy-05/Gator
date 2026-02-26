@@ -11,9 +11,6 @@ struct HomeView: View {
     
     @State private var courseForPopup: MataKuliah?
     @State private var navigationPath = NavigationPath()
-    @State private var isDarkMode = false
-    @State private var selectedCourseNameForPopup: String?
-    @State private var showPopup = false
     
     private var selectedMajor: Jurusan? {
         allJurusans.first { $0.nama == selectedMajorName }
@@ -23,204 +20,130 @@ struct HomeView: View {
         selectedMajor?.semesters.first { $0.nomor == selectedSemesterNumber }
     }
     
-    private var sampleCourses: [String] {
-        selectedSemester?.mataKuliah.map { $0.nama } ?? []
+    private var coursesToDisplay: [MataKuliah] {
+        selectedSemester?.mataKuliah.sorted(by: { $0.nama < $1.nama }) ?? []
     }
     
-    private var semesters: [Int] {
-        selectedMajor?.semesters.map { $0.nomor } ?? []
-    }
-    
-    private var jurusanOptions: [String] {
-        allJurusans.map { $0.nama }
-    }
-    let primaryGreen = Color(red: 0.1, green: 0.5, blue: 0.2)
-    let secondaryGreen = Color(red: 0.6, green: 0.85, blue: 0.6)
-    let lightGreen = Color(red: 0.9, green: 0.98, blue: 0.92)
+    let gridLayout: [GridItem] = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            ZStack {
+        ZStack {
+            NavigationStack(path: $navigationPath) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack {
-                            Image("gator")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 50, height: 50)
-
-                            Text("Gator")
-                                .font(.system(size: 24, weight: .bold))
-                                .foregroundStyle(
-                                    LinearGradient(colors: [primaryGreen, secondaryGreen],
-                                                   startPoint: .leading, endPoint: .trailing)
-                                )
-
-                            Spacer()
-
-                            Button {
-                                isDarkMode.toggle()
-                            } label: {
-                                Image(systemName: isDarkMode ? "moon.fill" : "sun.max.fill")
-                                    .font(.system(size: 28))
-                                    .foregroundColor(isDarkMode ? .black : .orange)
-                            }
-                        }
-                        .padding(.horizontal)
-                        .padding(.top, 20)
-
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack {
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(primaryGreen)
-                                Text("Hi, \(userName)")
-                                    .font(.system(size: 22, weight: .semibold))
-                                    .foregroundColor(.primary)
-                            }
-
-                            Text("Selamat datang di IT Del Grade Calculator")
-                                .font(.system(size: 16))
-                                .foregroundColor(.gray)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(RoundedRectangle(cornerRadius: 16).fill(lightGreen))
-                        .padding(.horizontal)
-
-                        HStack {
-                            Label("PROGRAM STUDI", systemImage: "building.columns.fill")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.black.opacity(0.7))
-
-                            Spacer()
-
-                            Picker("Jurusan", selection: Binding(
-                                get: { selectedMajorName ?? "" },
-                                set: { selectedMajorName = $0 }
-                            )) {
-                                ForEach(jurusanOptions, id: \.self) {
-                                    Text($0)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(primaryGreen)
-                        }
-                        .padding(.horizontal)
-
-                        HStack {
-                            Label("SEMESTER", systemImage: "graduationcap.fill")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.black.opacity(0.7))
-
-                            Spacer()
-
-                            Picker("Semester", selection: Binding(
-                                get: { selectedSemesterNumber ?? 1 },
-                                set: { selectedSemesterNumber = $0 }
-                            )) {
-                                ForEach(semesters, id: \.self) {
-                                    Text("Semester \($0)").tag($0)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .tint(primaryGreen)
-                        }
-                        .padding(.horizontal)
-
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                            ForEach(sampleCourses, id: \.self) { course in
-                                Button {
-                                    selectedCourseNameForPopup = course
-                                    showPopup = true
-                                } label: {
-                                    VStack(spacing: 8) {
-                                        Image(systemName: "book.closed.fill")
-                                            .font(.system(size: 24))
-                                            .foregroundColor(primaryGreen)
-
-                                        Text(course)
-                                            .font(.system(size: 16, weight: .medium))
-                                            .foregroundColor(.primary)
-                                            .multilineTextAlignment(.center)
-                                            .frame(maxWidth: .infinity)
+                    VStack(spacing: 24) {
+                        HeaderView()
+                        WelcomeCardView(nama: userName)
+                        
+                        // Picker Section
+                        VStack(spacing: 0) {
+                            HStack(spacing: 16) {
+                                Image(systemName: "building.columns.fill").font(.headline).foregroundColor(.gray)
+                                Text("PROGRAM STUDI").font(.caption).fontWeight(.semibold).foregroundColor(.gray)
+                                Spacer()
+                                Menu {
+                                    ForEach(allJurusans) { jurusan in
+                                        Button(jurusan.nama) { selectedMajorName = jurusan.nama }
                                     }
-                                    .padding()
-                                    .frame(minHeight: 100)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .fill(Color(.systemBackground))
-                                            .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 3)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 16)
-                                                    .stroke(primaryGreen.opacity(0.25), lineWidth: 1)
-                                            )
-                                    )
+                                } label: {
+                                    HStack {
+                                        Text(selectedMajorName ?? "Pilih Jurusan")
+                                        Image(systemName: "chevron.down")
+                                    }
+                                    .font(.subheadline).fontWeight(.semibold).foregroundColor(.primary)
                                 }
                             }
+                            .padding()
+
+                            Divider().padding(.leading, 40)
+
+                            HStack(spacing: 16) {
+                                Image(systemName: "graduationcap.fill").font(.headline).foregroundColor(.gray)
+                                Text("SEMESTER").font(.caption).fontWeight(.semibold).foregroundColor(.gray)
+                                Spacer()
+                                Menu {
+                                    if let selectedMajor = selectedMajor {
+                                        ForEach(selectedMajor.semesters.sorted(by: { $0.nomor < $1.nomor })) { semester in
+                                            Button("Semester \(semester.nomor)") {
+                                                selectedSemesterNumber = semester.nomor
+                                            }
+                                        }
+                                    } else {
+                                        Text("Pilih jurusan terlebih dahulu")
+                                    }
+                                } label: {
+                                    HStack {
+                                        Text("Semester \(selectedSemesterNumber ?? 1)")
+                                        Image(systemName: "chevron.down")
+                                    }
+                                    .font(.subheadline).fontWeight(.semibold).foregroundColor(.primary)
+                                }
+                            }
+                            .padding()
                         }
-                        .padding(.horizontal)
-
-                        Spacer()
-
-                        Text("Made by Kelompok 1 (Mic)")
-                            .font(.system(size: 12))
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding(.bottom, 20)
+                        .background(Color(.secondarySystemGroupedBackground)) // Warna netral yang adaptif
+                        .cornerRadius(12)
+                        
+                        // Courses Grid Section
+                        if !coursesToDisplay.isEmpty {
+                            LazyVGrid(columns: gridLayout, spacing: 16) {
+                                ForEach(coursesToDisplay) { matkul in
+                                    Button(action: { courseForPopup = matkul }) {
+                                        CourseButtonView(mataKuliah: matkul)
+                                    }
+                                }
+                            }
+                        } else {
+                            ContentUnavailableView("Pilih Jurusan & Semester", systemImage: "hand.point.up.left", description: Text("Silakan pilih jurusan dan semester di atas untuk melihat mata kuliah."))
+                                .padding(.top, 50)
+                        }
+                        
+                        FooterView()
                     }
+                    .padding()
                 }
-                .background(Color(.systemBackground).ignoresSafeArea())
+                .background(Color(UIColor.systemGroupedBackground))
                 .navigationBarHidden(true)
-                .preferredColorScheme(isDarkMode ? .dark : .light)
-
-                if showPopup {
-                    Color.black.opacity(0.4)
-                        .ignoresSafeArea()
-                        .onTapGesture {
-                            showPopup = false
-                        }
-
-                    if let name = selectedCourseNameForPopup,
-                       let matched = selectedSemester?.mataKuliah.first(where: { $0.nama == name }) {
-                        CourseDetailPopupView(courseForPopup: .constant(matched)) { selectedCourse in
-                            courseForPopup = nil
-                            navigationPath.append(selectedCourse)
-                            showPopup = false
-                        }
-                        .transition(.scale.combined(with: .opacity))
-                    }
-                }
+                .navigationDestination(for: MataKuliah.self) { matkul in KalkulatorNilaiView(mataKuliah: matkul) }
+                .onAppear(perform: setupDefaults)
             }
-            .onAppear(perform: setupDefaults)
+            .disabled(courseForPopup != nil)
+
+            // --- BAGIAN POP-UP ---
+            if courseForPopup != nil {
+                Color.black.opacity(0.4).ignoresSafeArea().onTapGesture { courseForPopup = nil }
+                
+                CourseDetailPopupView(courseForPopup: $courseForPopup) { courseToNavigate in
+                    // === PERBAIKAN LOGIKA NAVIGASI DI SINI ===
+                    // 1. Simpan dulu tujuan navigasi
+                    let targetCourse = courseToNavigate
+                    // 2. Tutup pop-up
+                    courseForPopup = nil
+                    // 3. Reset total path navigasi untuk memulai dari awal
+                    navigationPath = NavigationPath()
+                    // 4. Tambahkan tujuan baru ke path yang sudah bersih
+                    navigationPath.append(targetCourse)
+                }
+                .transition(.scale.combined(with: .opacity))
+            }
         }
-        .animation(.easeInOut, value: showPopup)
+        .animation(.easeInOut, value: courseForPopup)
         .onChange(of: selectedMajorName) {
-            selectedSemesterNumber = selectedMajor?.semesters.first?.nomor
+            // Saat jurusan diganti, otomatis pilih semester pertama yang tersedia
+            selectedSemesterNumber = selectedMajor?.semesters.sorted(by: { $0.nomor < $1.nomor }).first?.nomor
         }
     }
-
+    
     private func setupDefaults() {
-        DummyDataProvider.generate(context: modelContext)
+        DataProvider.generate(context: modelContext)
         if selectedMajorName == nil, let firstMajor = allJurusans.first {
             selectedMajorName = firstMajor.nama
         }
-        if selectedSemesterNumber == nil, let firstSemester = selectedMajor?.semesters.first {
+        if selectedSemesterNumber == nil,
+           let firstSemester = selectedMajor?.semesters.sorted(by: { $0.nomor < $1.nomor }).first {
             selectedSemesterNumber = firstSemester.nomor
         }
     }
 }
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(
-            for: Jurusan.self, Semester.self, MataKuliah.self, KomponenNilai.self,
-            configurations: config
-        )
-        
-        return HomeView(userName: "Yibo")
-            .modelContainer(container)
-    } catch {
-        return Text("Preview Error: \(error.localizedDescription)")
-    }
-}
-

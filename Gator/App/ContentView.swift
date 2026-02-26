@@ -1,17 +1,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    // Hanya perlu mengecek nama pengguna
     @AppStorage("userName") private var userName: String = ""
-    
+    @State private var showLoading = true
+
     var body: some View {
-        // Logika dinamis yang simpel:
-        // JIKA nama pengguna kosong, tampilkan OnboardingView.
-        // JIKA sudah ada, tampilkan HomeView dan kirim namanya.
-        if userName.isEmpty {
-            OnboardingView()
-        } else {
-            HomeView(userName: userName)
+        NavigationStack {
+            if showLoading {
+                LoadingScreen {
+                    withAnimation {
+                        showLoading = false
+                    }
+                }
+            } else {
+                if userName.isEmpty {
+                    OnboardingView()
+                } else {
+                    HomeView(userName: userName)
+                }
+            }
         }
+        .tint(Color("GreenGator"))
     }
 }

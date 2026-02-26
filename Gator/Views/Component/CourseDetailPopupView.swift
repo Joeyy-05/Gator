@@ -3,27 +3,25 @@ import SwiftUI
 struct CourseDetailPopupView: View {
     @Binding var courseForPopup: MataKuliah?
     var onContinue: (MataKuliah) -> Void
-    
-    // State untuk mengontrol munculnya sheet editor
+
     @State private var isEditing = false
-    
+
     var body: some View {
         if let mataKuliah = courseForPopup {
             VStack(spacing: 0) {
-                // Header: Judul dan Tombol Close
                 HStack {
-                    // Tombol Edit Baru
                     Button("Edit") {
                         isEditing.toggle()
                     }
                     .fontWeight(.semibold)
+                    .foregroundStyle(.greenGator)
 
                     Spacer()
-                    
+
                     Text(mataKuliah.nama)
                         .font(.headline)
                         .fontWeight(.bold)
-                    
+
                     Spacer()
 
                     Button {
@@ -35,53 +33,71 @@ struct CourseDetailPopupView: View {
                     }
                 }
                 .padding()
-                
+
                 Divider()
 
-                // Tabel Komponen (tidak berubah)
-                VStack(spacing: 0) {
-                    HStack {
-                        Text("Komponen")
-                        Spacer()
-                        Text("Weight")
-                    }
-                    .font(.caption).fontWeight(.bold).foregroundColor(.secondary)
-                    .padding(.horizontal).padding(.vertical, 8)
-                    
-                    ForEach(mataKuliah.komponen) { komponen in
-                        VStack(spacing: 0) {
-                            Divider()
-                            HStack {
-                                Text(komponen.nama)
-                                Spacer()
-                                Text("\(komponen.bobot)%")
-                            }
-                            .padding(.horizontal).padding(.vertical, 12)
+
+                ScrollView {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text("Komponen")
+                            Spacer()
+                            Text("Bobot")
                         }
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+
+                        ForEach(mataKuliah.komponen) { komponen in
+                            VStack(spacing: 0) {
+                                Divider()
+                                HStack {
+                                    Text(komponen.nama)
+                                    Spacer()
+                                    Text(formatBobot(komponen.bobot))
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 12)
+                            }
+                        }
+
+                        Spacer(minLength: 16) // biar ada spasi di bawah scroll
                     }
                 }
-                
-                Spacer()
-                
-                // Tombol Aksi (tidak berubah)
+
+                Divider()
+
+                // Tombol Aksi
                 Button {
                     onContinue(mataKuliah)
                 } label: {
-                    Text("Calculate Grade")
-                        .fontWeight(.semibold).foregroundColor(.white).frame(maxWidth: .infinity)
-                        .padding().background(Color.blue).cornerRadius(12)
+                    Text("Kalkulasi Grade")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color("GreenGator"))
+                        .cornerRadius(12)
                 }
                 .padding()
             }
             .frame(width: 320, height: 400)
-            .background(.white)
+            .background(Color("WhiteDark"))
             .cornerRadius(20)
             .shadow(radius: 10)
-            // Tambahkan .sheet modifier di sini
             .sheet(isPresented: $isEditing) {
-                // Tampilkan EditCourseView saat isEditing true
                 EditCourseView(mataKuliah: mataKuliah)
             }
+        }
+    }
+
+    private func formatBobot(_ value: Double) -> String {
+        if floor(value) == value {
+            return "\(Int(value))%"
+        } else {
+            return String(format: "%.1f%%", value)
         }
     }
 }

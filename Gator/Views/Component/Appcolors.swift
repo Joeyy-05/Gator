@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// Menyimpan warna kustom di satu tempat
 extension Color {
     static let appGreenLight = Color(red: 224/255, green: 245/255, blue: 242/255)
 }

@@ -6,12 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E5F4BFB92E1FC3C7001BE5F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5F4BFB82E1FC3C7001BE5F5 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		E5E0ACDE2E12780500B93C0B /* Gator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F4BFB82E1FC3C7001BE5F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F13E9A7D2E1F9EE000FCD573 /* Gator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E5E0ACE02E12780500B93C0B /* Gator */ = {
+		F13E9A7F2E1F9EE000FCD573 /* Gator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Gator;
 			sourceTree = "<group>";
@@ -19,7 +24,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E5E0ACDB2E12780500B93C0B /* Frameworks */ = {
+		F13E9A7A2E1F9EE000FCD573 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +34,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E5E0ACD52E12780500B93C0B = {
+		F13E9A742E1F9EE000FCD573 = {
 			isa = PBXGroup;
 			children = (
-				E5E0ACE02E12780500B93C0B /* Gator */,
-				E5E0ACDF2E12780500B93C0B /* Products */,
+				F13E9A7F2E1F9EE000FCD573 /* Gator */,
+				F13E9A7E2E1F9EE000FCD573 /* Products */,
+				E5F4BFB82E1FC3C7001BE5F5 /* Assets.xcassets */,
 			);
 			sourceTree = "<group>";
 		};
-		E5E0ACDF2E12780500B93C0B /* Products */ = {
+		F13E9A7E2E1F9EE000FCD573 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5E0ACDE2E12780500B93C0B /* Gator.app */,
+				F13E9A7D2E1F9EE000FCD573 /* Gator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,74 +54,75 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E5E0ACDD2E12780500B93C0B /* Gator */ = {
+		F13E9A7C2E1F9EE000FCD573 /* Gator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5E0ACEB2E12780600B93C0B /* Build configuration list for PBXNativeTarget "Gator" */;
+			buildConfigurationList = F13E9A882E1F9EE200FCD573 /* Build configuration list for PBXNativeTarget "Gator" */;
 			buildPhases = (
-				E5E0ACDA2E12780500B93C0B /* Sources */,
-				E5E0ACDB2E12780500B93C0B /* Frameworks */,
-				E5E0ACDC2E12780500B93C0B /* Resources */,
+				F13E9A792E1F9EE000FCD573 /* Sources */,
+				F13E9A7A2E1F9EE000FCD573 /* Frameworks */,
+				F13E9A7B2E1F9EE000FCD573 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E5E0ACE02E12780500B93C0B /* Gator */,
+				F13E9A7F2E1F9EE000FCD573 /* Gator */,
 			);
 			name = Gator;
 			packageProductDependencies = (
 			);
 			productName = Gator;
-			productReference = E5E0ACDE2E12780500B93C0B /* Gator.app */;
+			productReference = F13E9A7D2E1F9EE000FCD573 /* Gator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E5E0ACD62E12780500B93C0B /* Project object */ = {
+		F13E9A752E1F9EE000FCD573 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					E5E0ACDD2E12780500B93C0B = {
+					F13E9A7C2E1F9EE000FCD573 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = E5E0ACD92E12780500B93C0B /* Build configuration list for PBXProject "Gator" */;
+			buildConfigurationList = F13E9A782E1F9EE000FCD573 /* Build configuration list for PBXProject "Gator" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = E5E0ACD52E12780500B93C0B;
+			mainGroup = F13E9A742E1F9EE000FCD573;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = E5E0ACDF2E12780500B93C0B /* Products */;
+			productRefGroup = F13E9A7E2E1F9EE000FCD573 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5E0ACDD2E12780500B93C0B /* Gator */,
+				F13E9A7C2E1F9EE000FCD573 /* Gator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E5E0ACDC2E12780500B93C0B /* Resources */ = {
+		F13E9A7B2E1F9EE000FCD573 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F4BFB92E1FC3C7001BE5F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E5E0ACDA2E12780500B93C0B /* Sources */ = {
+		F13E9A792E1F9EE000FCD573 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +132,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E5E0ACE92E12780600B93C0B /* Debug */ = {
+		F13E9A862E1F9EE200FCD573 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -160,6 +167,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L3F5U7Z54M;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -188,7 +196,7 @@
 			};
 			name = Debug;
 		};
-		E5E0ACEA2E12780600B93C0B /* Release */ = {
+		F13E9A872E1F9EE200FCD573 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -223,6 +231,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L3F5U7Z54M;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -244,13 +253,14 @@
 			};
 			name = Release;
 		};
-		E5E0ACEC2E12780600B93C0B /* Debug */ = {
+		F13E9A892E1F9EE200FCD573 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3F5U7Z54M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -263,7 +273,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.JoeyCristo.Gator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ok.Gator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -271,13 +281,14 @@
 			};
 			name = Debug;
 		};
-		E5E0ACED2E12780600B93C0B /* Release */ = {
+		F13E9A8A2E1F9EE200FCD573 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L3F5U7Z54M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -290,7 +301,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.JoeyCristo.Gator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ok.Gator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -301,25 +312,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5E0ACD92E12780500B93C0B /* Build configuration list for PBXProject "Gator" */ = {
+		F13E9A782E1F9EE000FCD573 /* Build configuration list for PBXProject "Gator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5E0ACE92E12780600B93C0B /* Debug */,
-				E5E0ACEA2E12780600B93C0B /* Release */,
+				F13E9A862E1F9EE200FCD573 /* Debug */,
+				F13E9A872E1F9EE200FCD573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5E0ACEB2E12780600B93C0B /* Build configuration list for PBXNativeTarget "Gator" */ = {
+		F13E9A882E1F9EE200FCD573 /* Build configuration list for PBXNativeTarget "Gator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5E0ACEC2E12780600B93C0B /* Debug */,
-				E5E0ACED2E12780600B93C0B /* Release */,
+				F13E9A892E1F9EE200FCD573 /* Debug */,
+				F13E9A8A2E1F9EE200FCD573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E5E0ACD62E12780500B93C0B /* Project object */;
+	rootObject = F13E9A752E1F9EE000FCD573 /* Project object */;
 }
